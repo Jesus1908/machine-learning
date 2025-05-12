@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clasificación de Imágenes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script>
+  <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+</head>
+<body>
+
+<div id="main-container">
+  <div id="canvas-container">
+    <div id="resultado"></div>
+  </div>
+
+  <!-- Contenedor para las imágenes a la derecha -->
+  <div id="image-container">
+    <img src="images/img01.jpg" alt="cebra" class="image-option" data-image="images/img01.jpg">
+    <img src="images/img02.jpg" alt="leon" class="image-option" data-image="images/img02.jpg">
+    <img src="images/img03.jpg" alt="mariposa" class="image-option" data-image="images/img03.jpg">
+  </div>
+</div>
+
+  <script>
+    let classifier;
+    let selectedImage = null;
+    let capa;
+
+    function preload() {
+      classifier = ml5.imageClassifier("MobileNet");
+      capa = document.querySelector("#resultado");
+    }
+
+    function setup() {
+      const cnv = createCanvas(500, 400);
+      cnv.parent("canvas-container"); // Coloca el canvas dentro de #canvas-container para alinearlo
+
+      const images = document.querySelectorAll('.image-option');
+      images.forEach(img => {
+        img.addEventListener('click', () => selectImage(img));
+      });
+    }
+
+    function selectImage(imgElement) {
+      document.querySelectorAll('.image-option').forEach(img => img.classList.remove('selected'));
+
+      imgElement.classList.add('selected');
+      selectedImage = loadImage(imgElement.getAttribute('data-image'), () => {
+        classifier.classify(selectedImage, goResult);
+        image(selectedImage, 0, 0, width, width);  
+      });
+    }
+
+    function goResult(results) {
+      const confianza = (nf(results[0].confidence, 0, 2) * 100);
+      capa.innerHTML = `${results[0].label} - ${confianza}%`;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+body {
+  background-color: antiquewhite;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+}
+
+#main-container {
+  display: flex;
+  justify-content: flex-start; /* Alineación al inicio */
+  gap: 30px;  /* Espacio entre el canvas y las imágenes */
+  align-items: center; /* Alineación vertical centrada */
+}
+
+#canvas-container {
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos estén en columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+}
+
+#image-container {
+  display: flex;
+  flex-direction: column;  /* Las imágenes se colocan una debajo de la otra */
+  gap: 15px;                /* Espacio entre las imágenes */
+  margin-left: 30px;        /* Añadido margen izquierdo para separación del canvas */
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border: 2px solid #000;
+  border-radius: 8px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+img.selected {
+  border-color: red;
+}
+
+#resultado {
+  margin-top: 10px; /* Espaciado entre el canvas y el resultado */
+  text-align: center; /* Centra el texto dentro del div */
+  font-size: 18px; /* Ajusta el tamaño de la fuente */
+  color: #333; /* Color del texto */
+}
