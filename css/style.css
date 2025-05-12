@@ -4,28 +4,28 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center;     /* Centra verticalmente */
+  justify-content: center; 
+  align-items: center;    
 }
 
 #main-container {
   display: flex;
-  justify-content: flex-start; /* Alineación al inicio */
-  gap: 30px;  /* Espacio entre el canvas y las imágenes */
-  align-items: center; /* Alineación vertical centrada */
+  justify-content: flex-start; 
+  gap: 30px;  
+  align-items: center; 
 }
 
 #canvas-container {
   display: flex;
-  flex-direction: column; /* Asegura que los elementos estén en columna */
-  align-items: center; /* Centra los elementos horizontalmente */
+  flex-direction: column; 
+  align-items: center; 
 }
 
 #image-container {
   display: flex;
-  flex-direction: column;  /* Las imágenes se colocan una debajo de la otra */
-  gap: 15px;                /* Espacio entre las imágenes */
-  margin-left: 30px;        /* Añadido margen izquierdo para separación del canvas */
+  flex-direction: column;  
+  gap: 15px;      
+  margin-left: 30px;     
 }
 
 img {
@@ -46,8 +46,8 @@ img.selected {
 }
 
 #resultado {
-  margin-top: 10px; /* Espaciado entre el canvas y el resultado */
-  text-align: center; /* Centra el texto dentro del div */
-  font-size: 18px; /* Ajusta el tamaño de la fuente */
-  color: #333; /* Color del texto */
+  margin-top: 10px;
+  text-align: center; 
+  font-size: 18px;
+  color: #333; 
 }
